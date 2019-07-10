@@ -1,7 +1,7 @@
 import { FETCH_PRODUCTS, FILTER_PRODUCTS_BY_SIZE, SORT_PRODUCTS} from "./types";
 
 export const fetchProducts = () => (dispatch) => {
-    fetch("http://localhost:8000/products").then(res => res.json())
+    fetch("http://localhost:7000/posts").then(res => res.json())
     .then(data => {
         console.log(data);
         return dispatch({ type:FETCH_PRODUCTS , payload :data })
