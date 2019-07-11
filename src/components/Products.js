@@ -23,7 +23,6 @@ class Products extends React.Component {
                         <div>
                             <b>{utils.formatCurrency(product.price)}</b>
                             <button className="btn btn-primary" onClick={(e)=>{ 
-                                console.log('........',this.props.cartItems);
                                 return this.props.addToCart(this.props.cartItems,product)}}>
                                 Add To Cart
                             </button>
@@ -40,20 +39,24 @@ class Products extends React.Component {
     }
 }
 
-const mapStateToProps = state => {console.log("mapstate::",state);
+const mapStateToProps = state => {
+    console.log("mapstate::",state);
     return{
     products: state.products.filteredItems,
     cartItems: state.cart.items
 }}; 
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => {
+    console.log('mapdispatch::',dispatch);
+    return ({
     addToCart: (items, product) => {
-        console.log('....hi......',items,product);
+        console.log('....hi disp......',items,product);
         dispatch(addToCart(items, product));
     },
     fetchProducts : () => {
         dispatch(fetchProducts());
     }
-});
+})
+};
 
 export default connect(mapStateToProps,mapDispatchToProps)(Products);

@@ -5,6 +5,7 @@ import rootReducer from './reducers/index';
 
 const initialState = {};
 if(localStorage.getItem('cartItems')) {
+    console.log('in store.....');
     initialState.cart = {
         items: JSON.parse(localStorage.getItem('cartItems'))
     }

@@ -1,7 +1,7 @@
 import {ADD_TO_CART, REMOVE_FROM_CART} from '../actions/types';
 
 export const addToCart = (items, product) => (dispatch) => {
-    console.log('.......',items);
+    console.log('.......',items,product);
     const cartItems = items.slice();
     let productsAlreadyInCart = false;
     cartItems.forEach((cartItem) => {
