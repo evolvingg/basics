@@ -13,7 +13,8 @@ class Basket extends React.Component {
                     <ul>
                         {cartItems.map((item,i) => {
                             console.log(item);
-                            return (<li key={i}>
+                            return (
+                            <li key={i}>
                                 <b>{item.name}</b>
                                 <div>Number:{item.count}
                                 Total:
@@ -44,4 +45,12 @@ const mapStateToProps = state => ({
     cartItems: state.cart.items
 })
 
-export default connect(mapStateToProps,{removeFromCart})(Basket);
+
+const mapDispatchToProps = (dispatch) => ({
+    removeFromCart: (items, product) => {
+        console.log('....basket.....',items,product);
+        dispatch(removeFromCart(items, product));
+    }
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(Basket);

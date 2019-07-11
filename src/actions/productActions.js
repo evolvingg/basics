@@ -3,7 +3,7 @@ import { FETCH_PRODUCTS, FILTER_PRODUCTS_BY_SIZE, SORT_PRODUCTS} from "./types";
 export const fetchProducts = () => (dispatch) => {
     fetch("http://localhost:7000/posts").then(res => res.json())
     .then(data => {
-        console.log(data);
+        console.log("data::",data);
         return dispatch({ type:FETCH_PRODUCTS , payload :data })
     });     
 }

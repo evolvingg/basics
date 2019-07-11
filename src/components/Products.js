@@ -40,10 +40,20 @@ class Products extends React.Component {
     }
 }
 
-const mapStateToProps = state => {console.log(state);
+const mapStateToProps = state => {console.log("mapstate::",state);
     return{
     products: state.products.filteredItems,
     cartItems: state.cart.items
 }}; 
 
-export default connect(mapStateToProps,{addToCart,fetchProducts})(Products);
+const mapDispatchToProps = (dispatch) => ({
+    addToCart: (items, product) => {
+        console.log('....hi......',items,product);
+        dispatch(addToCart(items, product));
+    },
+    fetchProducts : () => {
+        dispatch(fetchProducts());
+    }
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(Products);
